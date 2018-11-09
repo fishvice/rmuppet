@@ -43,21 +43,20 @@ set_prognosis <- function(infile,
     return(txt)
   }
 
-  txt <- readLines(infile)
-  txt <- lh(txt, fbar,'# FishingMortality')
-  txt <- lh(txt, hr,'# HarvestRate')
-  txt <- lh(txt, w.rho,'# WeightCorr')
-  txt <- lh(txt, w.cv,'# WeightCV')
-  txt <- lh(txt, rec.rho,'# RecrCorr')
-  txt <- lh(txt, ass.cv,"# AssessmentCV")
-  txt <- lh(txt, ass.rho,"# AssessmentCorr")
-  txt <- lh(txt, ass.bias,"# AssessmentBias")
-  txt <- lh(txt, Btrigger,"# Btrigger")
-  txt <- lh(txt, MaxChange,"# MaxChange")
-  txt <- lh(txt, mW.years,"# Meanwtyears")
-  txt <- lh(txt, LastYearsTacRatio,"# LastYearsTacRatio")
-
-  write.table(txt, file = outfile,
-              row.names = F, col.names = F, quote = F)
+  readLines(infile) %>% 
+    lh(txt, fbar,'# FishingMortality') %>% 
+    lh(txt, hr,'# HarvestRate') %>% 
+    lh(txt, w.rho,'# WeightCorr') %>% 
+    lh(txt, w.cv,'# WeightCV') %>% 
+    lh(txt, rec.rho,'# RecrCorr') %>% 
+    lh(txt, ass.cv,"# AssessmentCV") %>% 
+    lh(txt, ass.rho,"# AssessmentCorr") %>% 
+    lh(txt, ass.bias,"# AssessmentBias") %>% 
+    lh(txt, Btrigger,"# Btrigger") %>% 
+    lh(txt, MaxChange,"# MaxChange") %>% 
+    lh(txt, mW.years,"# Meanwtyears") %>% 
+    lh(txt, LastYearsTacRatio,"# LastYearsTacRatio") %>% 
+    write.table(file = outfile,
+                row.names = F, col.names = F, quote = F)
 
 }
