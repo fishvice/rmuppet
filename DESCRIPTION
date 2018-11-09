@@ -1,0 +1,13 @@
+Package: rmuppet
+Title: What the Package Does (one line, title case)
+Version: 0.0.0.9000
+Authors@R:
+ c(person("Bjarki", "Elvarsson", email = "bjarki.elvarsson@hafogvatn.is",role = c("aut","cre"),
+   person("Einar", "Hjorleifsson", email = "einar.hjorleifsson@hafogvatn.is",role = c("aut")),
+   person("Hoskuldur", "Bjornsson", email = "hoskuldur.bjornsson@hafogvatn.is",role = c("aut")))
+Description: Muppeteers.
+Depends: R (>= 3.5.1)
+License: GPL (>=2)
+Encoding: UTF-8
+LazyData: true
+Imports: tidyverse
