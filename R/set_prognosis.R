@@ -31,32 +31,35 @@ set_prognosis <- function(infile,
                           mW.years,
                           LastYearsTacRatio) {
 
-  lh <- function(txt, parameter, pattern){
-    if(!missing(parameter)){
-      i <- grep(pattern,txt)
-      if(!any(i)){
-        print(paste("   ",pattern,"   ","does not exist"))
-        break()
-      }
-      txt[i] <- paste(as.character(parameter),"\t",pattern)
-    }
-    return(txt)
-  }
+
 
   readLines(infile) %>% 
-    lh(txt, fbar,'# FishingMortality') %>% 
-    lh(txt, hr,'# HarvestRate') %>% 
-    lh(txt, w.rho,'# WeightCorr') %>% 
-    lh(txt, w.cv,'# WeightCV') %>% 
-    lh(txt, rec.rho,'# RecrCorr') %>% 
-    lh(txt, ass.cv,"# AssessmentCV") %>% 
-    lh(txt, ass.rho,"# AssessmentCorr") %>% 
-    lh(txt, ass.bias,"# AssessmentBias") %>% 
-    lh(txt, Btrigger,"# Btrigger") %>% 
-    lh(txt, MaxChange,"# MaxChange") %>% 
-    lh(txt, mW.years,"# Meanwtyears") %>% 
-    lh(txt, LastYearsTacRatio,"# LastYearsTacRatio") %>% 
+    line_replace(txt, fbar,'# FishingMortality') %>% 
+    line_replace(txt, hr,'# HarvestRate') %>% 
+    line_replace(txt, w.rho,'# WeightCorr') %>% 
+    line_replace(txt, w.cv,'# WeightCV') %>% 
+    line_replace(txt, rec.rho,'# RecrCorr') %>% 
+    line_replace(txt, ass.cv,"# AssessmentCV") %>% 
+    line_replace(txt, ass.rho,"# AssessmentCorr") %>% 
+    line_replace(txt, ass.bias,"# AssessmentBias") %>% 
+    line_replace(txt, Btrigger,"# Btrigger") %>% 
+    line_replace(txt, MaxChange,"# MaxChange") %>% 
+    line_replace(txt, mW.years,"# Meanwtyears") %>% 
+    line_replace(txt, LastYearsTacRatio,"# LastYearsTacRatio") %>% 
     write.table(file = outfile,
                 row.names = F, col.names = F, quote = F)
 
+}
+
+
+line_replace <- function(txt, parameter, pattern){
+  if(!missing(parameter)){
+    i <- grep(pattern,txt)
+    #if(!any(i)){
+    #  print(paste("   ",pattern,"   ","does not exist"))
+    #  break()
+    #}
+    txt[i] <- paste(as.character(parameter),"\t",pattern)
+  }
+  return(txt)
 }
