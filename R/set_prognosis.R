@@ -50,7 +50,7 @@ set_prognosis <- function(infile,
                 row.names = F, col.names = F, quote = F)
 
 }
-
+ 
 
 line_replace <- function(txt, parameter, pattern){
   if(!missing(parameter)){
